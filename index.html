@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> عدد</title>
+    <style>
+        body {
+            font-family: B nazanin;
+            direction: rtl;
+            text-align: center;
+            margin-top: 50px;
+            background-color: darkturquoise;
+            color: darkblue;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            font-family: B nazanin;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>بررسی عدد اول</h1>
+    <input type="number" id="numberInput" placeholder="یک عدد وارد کنید" required>
+    <button onclick="ab()">بررسی</button>
+    <div id="result"></div>
+    <img src="20241224_144010.jpg" >
+
+    <script>
+        function isPrimeRecursive(number, divisor = 2) {
+         
+            if (number <= 1) return false;
+     
+            if (divisor * divisor > number) return true;
+            if (number % divisor === 0) return false;
+
+            return isPrimeRecursive(number, divisor + 1);
+        }
+
+        function ab() {
+            const userInput = document.getElementById('numberInput').value;
+            const number = parseInt(userInput);
+            const resultElement = document.getElementById('result');
+
+            if (isNaN(number)) {
+                resultElement.innerText = "ورودی معتبر نیست.";
+            } else {
+                if (isPrimeRecursive(number)) {
+                    resultElement.innerText = number + " یک عدد اول است.";
+                } else {
+                    resultElement.innerText = number + " یک عدد اول نیست.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
